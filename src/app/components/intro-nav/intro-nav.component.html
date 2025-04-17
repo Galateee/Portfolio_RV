@@ -1,0 +1,19 @@
+<header [class.open]="isIntroOpen">
+  <div class="triangle left"><h1 class="ml3" id="fittext1">WELCOME</h1></div>
+  <div class="triangle right"><h1 class="ml3" id="fittext1">WELCOME</h1></div>
+  <button (click)="onButtonClick()" ></button>
+</header>
+
+<nav>
+  <ul>
+    @for (section of sections; track $index) { <li (click)="scrollToSection($index)">{{section}}</li>}
+
+  </ul>
+  <div id="nav-close" (click)="toggleNav()"><i class="fas fa-times"></i></div>
+</nav>
+
+<div>
+  <content>
+    @for (section of sections; track $index) { <section>{{section}}</section>}
+  </content>
+</div>
