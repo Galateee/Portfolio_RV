@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
-import { animate } from 'animejs';
+import { animate, svg, stagger } from 'animejs';
 
 @Component({
   selector: 'app-intro-nav',
@@ -51,10 +51,15 @@ export class IntroNavComponent {
   }
 
   onButtonClick(): void {
+    const intro = this.el.nativeElement.querySelector('.intro');
+
     if (this.isIntroOpen) {
       this.toggleNav();
     } else {
       this.isIntroOpen = true;
+      setTimeout(() => {
+        this.renderer.setStyle(intro, 'display', 'none');
+      }, 1000);
       console.log('intro:', this.isIntroOpen);
     }
   }
@@ -66,4 +71,6 @@ export class IntroNavComponent {
       target?.scrollIntoView({ behavior: 'smooth' });
     }, 300);
   }
+
+
 }
